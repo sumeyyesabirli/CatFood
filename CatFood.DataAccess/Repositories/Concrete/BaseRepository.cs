@@ -1,35 +1,38 @@
 ﻿using CatFood.Core.Repositories.Abstract;
+using CatFood.DataAccess.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.Core.Repositories.Concrete
+namespace CatFood.DataAccess.Repositories.Concrete
 {
-    public class BaseRepository<T> : IRepository<T> where T : class
+    public class BaseRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        public Task Add(T entity)
+        private readonly EfDbContext _context;
+
+
+        public Task<bool> Add(TEntity entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(int id)
+        public Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> GetAll()
+        public IQueryable<List<TEntity>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<T> GetById(int id)
+        public Task<TEntity> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task Update(T entity)
+        public Task<bool> Update(TEntity entity)
         {
             throw new NotImplementedException();
         }

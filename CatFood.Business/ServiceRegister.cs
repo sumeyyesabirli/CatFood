@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,5 @@ namespace CatFood.Business
         {
             services.AddDbContext<DbContext>(options => options.UseNpgsql("User ID = postgres; Password = ss123ss; Server = localhost; Port = 5432; Database = CatFoodDb; "));
         }
-        
     }
 }

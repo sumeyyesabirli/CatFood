@@ -13,12 +13,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\CatFood.Business\CatFood.Business.csproj" />
+    <ProjectReference Include="..\CatFood.DataAccess\CatFood.DataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CatFood.Business\CatFood.Business.csproj" />
-    <ProjectReference Include="..\CatFood.DataAccess\CatFood.DataAccess.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

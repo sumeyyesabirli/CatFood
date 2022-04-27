@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.DataAccess.Entities
+namespace CatFood.Entities.Entities
 {
-    public class Foods :BaseEntity
+    public class Food :BaseEntity
     {
         [Required, ForeignKey("Cats")]
         public int CatId { get; set; }
@@ -18,6 +18,6 @@ namespace CatFood.DataAccess.Entities
         public string FoodType { get; set; }
         public bool? Sterilised { get; set; }
 
-        public Cats Cats { get; set; }
+        public Cat Cat { get; set; }
     }
 }

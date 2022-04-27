@@ -1,4 +1,4 @@
-﻿using CatFood.DataAccess.Entities;
+﻿using CatFood.Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace CatFood.DataAccess.Context
 {
-    internal class EfDbContext : DbContext
+    public class EfDbContext : DbContext
     {
-        public EfDbContext( DbContextOptions options) : base(options)
-        {     
+        public EfDbContext(DbContextOptions options) : base(options)
+        {
 
         }
-        public DbSet<Cats> Cats { get; set; }
-        public DbSet<Foods> Foods { get; set; }
+        public DbSet<Cat> Cats { get; set; }
+        public DbSet<Food> Foods { get; set; }
 
     }
 }

@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CatFood.DataAccess.Migrations
 {
     [DbContext(typeof(EfDbContext))]
-    [Migration("20220427015438_MyMigration")]
-    partial class MyMigration
+    [Migration("20220427122834_mig_1")]
+    partial class mig_1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

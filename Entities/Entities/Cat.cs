@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.DataAccess.Entities
+namespace CatFood.Entities.Entities
 {
-    public class Cats :BaseEntity
+    public class Cat :BaseEntity
     {
         public string Name { get; set; }
         public string CatType { get; set; }
