@@ -8,7 +8,7 @@ namespace CatFood.Core.Repositories.Abstract
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        DbSet<T> Table { get; }
+        
         Task<bool> Add(T entity);
         bool Update(T entity);
         bool Delete(T entity);

@@ -14,6 +14,7 @@ namespace CatFood.DataAccess.Repositories.Concrete
     {
         private readonly EfDbContext _context;
         protected readonly DbSet<TEntity> DbSet;
+        
 
         public BaseRepository(EfDbContext context)
         {
@@ -21,33 +22,32 @@ namespace CatFood.DataAccess.Repositories.Concrete
             DbSet = _context.Set<TEntity>();
         }
 
-        public DbSet<TEntity> Table => _context.Set<TEntity>();
 
         public async Task<bool> Add(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry=await Table.AddAsync(entity);
+            EntityEntry<TEntity> entityEntry=await DbSet.AddAsync(entity);
             return entityEntry.State == EntityState.Added;
         }
 
         public bool Update(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry=Table.Update(entity);
+            EntityEntry<TEntity> entityEntry= DbSet.Update(entity);
             return entityEntry.State==EntityState.Modified;
         }
 
         public bool Delete(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry = Table.Remove(entity);
+            EntityEntry<TEntity> entityEntry = DbSet.Remove(entity);
             return entityEntry.State == EntityState.Deleted;
         }
 
         public async Task<TEntity> GetById(int id)
         
-             => await Table.FirstOrDefaultAsync(x => x.Id == id);   
+             => await DbSet.FirstOrDefaultAsync(x => x.Id == id);
 
         public IQueryable<TEntity> GetAll()
-        
-            => Table;
+
+            => DbSet;
         public async Task<int> SaveAsync()
         =>  await _context.SaveChangesAsync();
 

@@ -16,4 +16,9 @@
     <ProjectReference Include="..\CatFood.DataAccess\CatFood.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Command\" />
+    <Folder Include="Query\" />
+  </ItemGroup>
+
 </Project>
