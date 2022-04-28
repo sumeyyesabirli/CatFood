@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.Entities.Entities
+namespace Entities.Entities
 {
-    public class Cat :BaseEntity
+    public class Cat : BaseEntity
     {
         public string Name { get; set; }
         public string CatType { get; set; }

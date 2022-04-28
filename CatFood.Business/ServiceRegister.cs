@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using CatFood.DataAccess.Repositories.Abstract;
+using CatFood.DataAccess.Repositories.Concrete;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +18,8 @@ namespace CatFood.Business
         public static void  AddBusinessRegister(this IServiceCollection services)
         {
             services.AddDbContext<DbContext>(options => options.UseNpgsql("User ID = postgres; Password = ss123ss; Server = localhost; Port = 5432; Database = CatFoodDb; "));
+            services.AddScoped<ICatRepository, CatRepository>();
+            services.AddScoped<IFoodRepository, FoodRepository>();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using CatFood.Entities.Entities;
+﻿using Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

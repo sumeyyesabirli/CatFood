@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.Entities.Entities
+namespace Entities.Entities
 {
-    public class Food :BaseEntity
+    public class Food : BaseEntity
     {
         [Required, ForeignKey("Cats")]
         public int CatId { get; set; }
