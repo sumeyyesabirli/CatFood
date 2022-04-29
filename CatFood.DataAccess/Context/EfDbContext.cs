@@ -10,6 +10,10 @@ namespace CatFood.DataAccess.Context
 {
     public class EfDbContext : DbContext
     {
+        public EfDbContext(DbContextOptions<EfDbContext> options) : base(options)
+        {
+
+        }
         public EfDbContext(DbContextOptions options) : base(options)
         {
 

@@ -48,6 +48,7 @@ namespace CatFood.DataAccess.Repositories.Concrete
         public IQueryable<TEntity> GetAll()
 
             => DbSet;
+
         public async Task<int> SaveAsync()
         =>  await _context.SaveChangesAsync();
 
