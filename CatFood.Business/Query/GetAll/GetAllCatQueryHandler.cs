@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CatFood.Business.CQRS.Queries.GetAllCat
+namespace CatFood.Business.Query.GetAll
 {
     public class GetAllCatQueryHandler : IRequestHandler<GetAllCatRequest, List<GetAllCatResponse>>
     {
@@ -22,6 +22,7 @@ namespace CatFood.Business.CQRS.Queries.GetAllCat
 
             return Task.FromResult(cat.Select(x => new GetAllCatResponse()
             {
+                Id = x.Id,
                 CatType = x.CatType,
                 Name = x.Name, 
 

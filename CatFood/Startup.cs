@@ -1,5 +1,6 @@
-using CatFood.Business.CQRS.Queries.GetAllCat;
-using CatFood.Business.CQRS.Queries.UpdadeCat;
+using CatFood.Business.Command.Cat.Add;
+using CatFood.Business.Command.Update;
+using CatFood.Business.Query.GetAll;
 using CatFood.DataAccess.Context;
 using CatFood.DataAccess.Repositories.Abstract;
 using CatFood.DataAccess.Repositories.Concrete;
@@ -36,11 +37,15 @@ namespace CatFood.Api
             services.AddDbContext<DbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("Default")));
             services.AddTransient<EfDbContext>();
+
+            #region Repository Register
             services.AddTransient<ICatRepository, CatRepository>();
             services.AddTransient<IFoodRepository, FoodRepository>();
-            services.AddMediatR(typeof(GetAllCatQueryHandler).GetTypeInfo().Assembly);
-            services.AddMediatR(typeof(UpdateCatQueryHandler).GetTypeInfo().Assembly);
+            #endregion
 
+            #region MediatR register
+            services.AddMediatR(typeof(GetAllCatQueryHandler).GetTypeInfo().Assembly);         
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

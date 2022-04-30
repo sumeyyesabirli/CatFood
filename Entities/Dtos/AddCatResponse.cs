@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class GetAllCatResponse
+    public class AddCatResponse
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string CatType { get; set; }
     }

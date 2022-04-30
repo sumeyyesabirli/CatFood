@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Command\**" />
-    <Compile Remove="Query\**" />
-    <EmbeddedResource Remove="Command\**" />
-    <EmbeddedResource Remove="Query\**" />
-    <None Remove="Command\**" />
-    <None Remove="Query\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="MediatR" Version="5.0.1" />
@@ -25,6 +16,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CatFood.DataAccess\CatFood.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Query\GetById\" />
   </ItemGroup>
 
 </Project>

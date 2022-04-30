@@ -1,5 +1,7 @@
-﻿using CatFood.Business.CQRS.Queries.GetAllCat;
-using CatFood.Business.CQRS.Queries.UpdadeCat;
+﻿
+using CatFood.Business.Command.Cat.Add;
+using CatFood.Business.Command.Update;
+using CatFood.Business.Query.GetAll;
 using Entities.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -12,25 +14,33 @@ namespace CatFood.Api.Controllers
     [ApiController]
     public class CatsController : ControllerBase
     {
-        private readonly IMediator mediator;
+        private readonly IMediator _mediator;
 
         public CatsController(IMediator mediator)
         {
-            this.mediator = mediator;
+            _mediator = mediator;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllCatRequest request)
         {
-            List<GetAllCatResponse> result = await mediator.Send(request);
+            var result = await _mediator.Send(request);
             return Ok(result);
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateAsync([FromQuery] UpdateCatRequest request)
+        public async Task<IActionResult> UpdateAsync([FromBody] UpdateCatRequest request)
         {
-            List<UpdateCatResponse> result = await mediator.Send(request);
+           var result = await _mediator.Send(request);
             return Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Add([FromBody] AddCatRequest request)
+        {
+      
+            return Ok(await _mediator.Send(request));
         }
     }
 }
