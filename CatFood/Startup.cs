@@ -1,4 +1,5 @@
 using CatFood.Business.CQRS.Queries.GetAllCat;
+using CatFood.Business.CQRS.Queries.UpdadeCat;
 using CatFood.DataAccess.Context;
 using CatFood.DataAccess.Repositories.Abstract;
 using CatFood.DataAccess.Repositories.Concrete;
@@ -38,6 +39,7 @@ namespace CatFood.Api
             services.AddTransient<ICatRepository, CatRepository>();
             services.AddTransient<IFoodRepository, FoodRepository>();
             services.AddMediatR(typeof(GetAllCatQueryHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(UpdateCatQueryHandler).GetTypeInfo().Assembly);
 
         }
 

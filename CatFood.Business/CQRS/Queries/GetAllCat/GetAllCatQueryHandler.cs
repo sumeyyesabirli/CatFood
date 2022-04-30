@@ -23,6 +23,7 @@ namespace CatFood.Business.CQRS.Queries.GetAllCat
             return Task.FromResult(cat.Select(x => new GetAllCatResponse()
             {
                 CatType = x.CatType,
+                Name = x.Name, 
 
             }).ToList());
         }

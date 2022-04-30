@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class GetAllCatResponse
+    public class UpdateCatResponse
     {
         public string Name { get; set; }
         public string CatType { get; set; }
-
     }
 }
