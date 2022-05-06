@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Dtos
+namespace CatFood.Business.Command.Responses
 {
-    public class GetAllCatResponse
+    public class UpdateCatCommandResponse
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string CatType { get; set; }
     }

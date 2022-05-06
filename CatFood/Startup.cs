@@ -1,6 +1,7 @@
-using CatFood.Business.Command.Cat.Add;
-using CatFood.Business.Command.Update;
-using CatFood.Business.Query.GetAll;
+using AutoMapper;
+using CatFood.Business.Command;
+using CatFood.Business.Mapper;
+using CatFood.Business.Query;
 using CatFood.DataAccess.Context;
 using CatFood.DataAccess.Repositories.Abstract;
 using CatFood.DataAccess.Repositories.Concrete;
@@ -38,14 +39,23 @@ namespace CatFood.Api
                 options.UseNpgsql(Configuration.GetConnectionString("Default")));
             services.AddTransient<EfDbContext>();
 
-            #region Repository Register
-            services.AddTransient<ICatRepository, CatRepository>();
-            services.AddTransient<IFoodRepository, FoodRepository>();
+          #region Repository Register
+          services.AddTransient<ICatRepository, CatRepository>();
+          services.AddTransient<IFoodRepository, FoodRepository>();
+           #endregion
+          
+          #region MediatR register
+          services.AddMediatR(typeof(Startup));
+         //   services.AddMediatR(typeof(DeleteCatCommandHandler).GetTypeInfo().Assembly);
+         //   services.AddMediatR(typeof(UpdateCatCommandHandler).GetTypeInfo().Assembly);
             #endregion
 
-            #region MediatR register
-            services.AddMediatR(typeof(GetAllCatQueryHandler).GetTypeInfo().Assembly);         
-            #endregion
+            var config = new MapperConfiguration(conf =>
+            {
+                conf.AddProfile<RegisterMapper>();
+            });
+            services.AddScoped(s => config.CreateMapper());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
