@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatFood.DataAccess", "CatFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatFood.Business", "CatFood.Business\CatFood.Business.csproj", "{59990506-D575-4923-8944-B9E0628EC460}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{F414C3DE-5F1E-4EF4-9EDF-C7B298E6FEF6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{59990506-D575-4923-8944-B9E0628EC460}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59990506-D575-4923-8944-B9E0628EC460}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59990506-D575-4923-8944-B9E0628EC460}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F414C3DE-5F1E-4EF4-9EDF-C7B298E6FEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F414C3DE-5F1E-4EF4-9EDF-C7B298E6FEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F414C3DE-5F1E-4EF4-9EDF-C7B298E6FEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F414C3DE-5F1E-4EF4-9EDF-C7B298E6FEF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

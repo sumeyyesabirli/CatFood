@@ -1,5 +1,6 @@
 ﻿
 using CatFood.Business.Command.Requests;
+using CatFood.Business.Command.Responses;
 using CatFood.Business.Query.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -18,26 +19,48 @@ namespace CatFood.Api.Controllers
         {
             _mediator = mediator;
         }
-
         [HttpGet("getall")]
-        public async Task<IActionResult> GetAll() => Ok(await _mediator.Send(new CatQueryRequest()));
-
-        [HttpGet("getbyid")]
-        public async Task<IActionResult> GetById(int id) => Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id }));
-
-
-        [HttpPost("add")]
-        public async Task<IActionResult> Add(AddCatCommandRequest request) => Ok(await _mediator.Send(request));
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id) => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, UpdateCatCommandRequest request)
+        public async Task<IActionResult> GetAll()
         {
-            request.Id = id;
+            var query = new CatQueryRequest();
+            return Ok(await _mediator.Send(query));
+        }
+        [HttpPost("add")]
+       public async Task<IActionResult> Add(AddCatCommandRequest request)
+        {
+          
             return Ok(await _mediator.Send(request));
         }
+
+
+       
+
+
+
+
+
+
+
+
+        /// [HttpGet("getall")]
+        /// public async Task<IActionResult> GetAll() => Ok(await _mediator.Send(new CatQueryRequest()));
+        ///
+        /// [HttpGet("getbyid")]
+        ///public async Task<IActionResult> GetById(int id) => Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id }));
+        ///
+        ///
+        //  [HttpPost("add")]
+        //  public async Task<IActionResult> Add(AddCatCommandRequest request) => Ok(await _mediator.Send(request));
+
+        /// [HttpDelete("{id}")]
+        /// public async Task<IActionResult> Delete(int id) => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
+        ///
+        /// [HttpPut("{id}")]
+        /// public async Task<IActionResult> Put(int id, UpdateCatCommandRequest request)
+        /// {
+        ///     request.Id = id;
+        ///     return Ok(await _mediator.Send(request));
+        /// }
 
 
     }

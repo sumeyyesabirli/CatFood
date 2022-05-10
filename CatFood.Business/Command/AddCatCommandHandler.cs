@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CatFood.Business.Command.Requests;
+using CatFood.Business.Command.Responses;
 using CatFood.DataAccess.Repositories.Abstract;
 using Entities.Entities;
 using MediatR;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CatFood.Business.Command
 {
-    public class AddCatCommandHandler : IRequestHandler<AddCatCommandRequest, bool>
+    public class AddCatCommandHandler : IRequestHandler<AddCatCommandRequest, AddCatCommandResponse>
     {
         private readonly ICatRepository _catRepository;
         private readonly IMapper _mapper;
@@ -23,11 +24,15 @@ namespace CatFood.Business.Command
             _mapper = mapper;
         }
 
-        public Task<bool> Handle(AddCatCommandRequest request, CancellationToken cancellationToken)
+        public Task<AddCatCommandResponse> Handle(AddCatCommandRequest request, CancellationToken cancellationToken)
         {
+
             var mapCatRequest = _mapper.Map<Cat>(request);
-            var catId = _catRepository.Add(mapCatRequest);
-            return Task.FromResult(true);
+            var cat = _catRepository.Add(mapCatRequest);
+  
+            
+            var mapCat = _mapper.Map<AddCatCommandResponse>(cat);
+            return Task.FromResult(mapCat);
         }
     }
 }

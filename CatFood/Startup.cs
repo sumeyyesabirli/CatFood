@@ -1,7 +1,9 @@
 using AutoMapper;
+using CatFood.Business;
 using CatFood.Business.Command;
 using CatFood.Business.Mapper;
 using CatFood.Business.Query;
+using CatFood.DataAccess;
 using CatFood.DataAccess.Context;
 using CatFood.DataAccess.Repositories.Abstract;
 using CatFood.DataAccess.Repositories.Concrete;
@@ -29,7 +31,8 @@ namespace CatFood.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddBusinesRegistration();
+           // services.AddDataAccessRegistration();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -45,10 +48,11 @@ namespace CatFood.Api
            #endregion
           
           #region MediatR register
-          services.AddMediatR(typeof(Startup));
-         //   services.AddMediatR(typeof(DeleteCatCommandHandler).GetTypeInfo().Assembly);
-         //   services.AddMediatR(typeof(UpdateCatCommandHandler).GetTypeInfo().Assembly);
+          services.AddMediatR(typeof(CatFood.Business.ServiceRegister));
+            //   services.AddMediatR(typeof(DeleteCatCommandHandler).GetTypeInfo().Assembly);
+           // services.AddMediatR(typeof(AddCatCommandHandler).GetTypeInfo().Assembly);
             #endregion
+            
 
             var config = new MapperConfiguration(conf =>
             {

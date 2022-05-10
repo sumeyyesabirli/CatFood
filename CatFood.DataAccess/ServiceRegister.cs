@@ -15,20 +15,30 @@ using System.Threading.Tasks;
 namespace CatFood.DataAccess
 {
     public static class ServiceRegister
-    {     
-       //  public static IServiceCollection AddDataAccessRegister(this IServiceCollection services, Configuration ////figuration)
-       //  {
-       //      services.AddDbContext<EfDbContext>(x =>
-       //      {
-       //          x.UseNpgsql(configuration.GetConnectionString("Default"));
-       //      });
-       //      services.TryAddScoped<DbContext, EfDbContext>();
-       //      services.AddScoped<ICatRepository, CatRepository>();
-       //      services.AddScoped<IFoodRepository, FoodRepository>();
-       //
-       //      return services;
-       //  }
+    {
+        //  public static IServiceCollection AddDataAccessRegister(this IServiceCollection services, Configuration ////figuration)
+        //  {
+        //      services.AddDbContext<EfDbContext>(x =>
+        //      {
+        //          x.UseNpgsql(configuration.GetConnectionString("Default"));
+        //      });
+        //      services.TryAddScoped<DbContext, EfDbContext>();
+        //      services.AddScoped<ICatRepository, CatRepository>();
+        //      services.AddScoped<IFoodRepository, FoodRepository>();
+        //
+        //      return services;
+        //  }
+
+
+        public static void AddDataAccessRegistration(this IServiceCollection services)
+        {
+            services.AddDbContext<EfDbContext>(opt => opt.UseInMemoryDatabase("memoryDb"));
+        }
     }
+
+
+
+
 
     
 }

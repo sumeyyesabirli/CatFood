@@ -16,10 +16,18 @@ namespace CatFood.Business
 {
     public static class ServiceRegister
     {
-       
+       // public static void AddBusinesRegistration(this IServiceCollection services)
+       // {
+       //     var assm = Assembly.GetExecutingAssembly();
+       //
+       //     services.AddAutoMapper(assm);
+       //     services.AddMediatR(assm);
+       // }
 
-        
-
-     
+        public static void AddBusinesRegistration(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddMediatR(Assembly.GetExecutingAssembly());
+            serviceCollection.AddAutoMapper(Assembly.GetExecutingAssembly());
+        }
     }
 }
