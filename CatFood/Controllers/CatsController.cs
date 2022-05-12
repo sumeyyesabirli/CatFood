@@ -25,15 +25,28 @@ namespace CatFood.Api.Controllers
             var query = new CatQueryRequest();
             return Ok(await _mediator.Send(query));
         }
-        [HttpPost("add")]
-       public async Task<IActionResult> Add(AddCatCommandRequest request)
-        {
-          
-            return Ok(await _mediator.Send(request));
+       // [HttpPost("add")]
+      // public async Task<IActionResult> Add(AddCatCommandRequest request)
+      //
+      // {
+      //
+      //     return Ok(await _mediator.Send(request));
+      // }
+        [HttpGet("getbyid")]
+        public async Task<IActionResult> GetAsync(int id)
+        { 
+           return Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id })); 
         }
+        [HttpPost("add")]
+         public async Task<IActionResult> Add(AddCatCommandRequest request) => Ok(await _mediator.Send(request));
+        [HttpDelete("{id}")]
+         public async Task<IActionResult> Delete(int id) => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
+
+        [HttpPost("insert")]
+        public async Task<IActionResult> InsertAsync([FromBody] CatFood.Business.Command.Requests.AddCatCommandRequest request)
+           => Ok(await _mediator.Send(request));
 
 
-       
 
 
 
@@ -42,25 +55,25 @@ namespace CatFood.Api.Controllers
 
 
 
-        /// [HttpGet("getall")]
-        /// public async Task<IActionResult> GetAll() => Ok(await _mediator.Send(new CatQueryRequest()));
-        ///
-        /// [HttpGet("getbyid")]
-        ///public async Task<IActionResult> GetById(int id) => Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id }));
-        ///
-        ///
+        //    [HttpGet("getall")]
+        //  public async Task<IActionResult> GetListAsync() => Ok(await _mediator.Send(new CatQueryRequest()));
+        // 
+        //  [HttpGet("getbyid")]
+        // public async Task<IActionResult> GetById(int id) => Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id }));
+        // 
+        // 
         //  [HttpPost("add")]
-        //  public async Task<IActionResult> Add(AddCatCommandRequest request) => Ok(await _mediator.Send(request));
-
-        /// [HttpDelete("{id}")]
-        /// public async Task<IActionResult> Delete(int id) => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
-        ///
-        /// [HttpPut("{id}")]
-        /// public async Task<IActionResult> Put(int id, UpdateCatCommandRequest request)
-        /// {
-        ///     request.Id = id;
-        ///     return Ok(await _mediator.Send(request));
-        /// }
+        //  public async Task<IActionResult> AddAync(AddCatCommandRequest request) => Ok(await _mediator.Send(request));
+        //
+        //  [HttpDelete("{id}")]
+        //  public async Task<IActionResult> Delete(int id) => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
+        // 
+        //  [HttpPut("{id}")]
+        //  public async Task<IActionResult> Put(int id, UpdateCatCommandRequest request)
+        //  {
+        //      request.Id = id;
+        //      return Ok(await _mediator.Send(request));
+        //  }
 
 
     }

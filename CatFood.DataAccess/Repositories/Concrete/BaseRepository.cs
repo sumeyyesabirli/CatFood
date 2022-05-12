@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace CatFood.DataAccess.Repositories.Concrete
@@ -14,7 +15,7 @@ namespace CatFood.DataAccess.Repositories.Concrete
     {
         private readonly EfDbContext _context;
         protected readonly DbSet<TEntity> DbSet;
-        
+
 
         public BaseRepository(EfDbContext context)
         {
@@ -22,17 +23,19 @@ namespace CatFood.DataAccess.Repositories.Concrete
             DbSet = _context.Set<TEntity>();
         }
 
+      
+
 
         public async Task<bool> Add(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry=await DbSet.AddAsync(entity);
+            EntityEntry<TEntity> entityEntry = await DbSet.AddAsync(entity);
             return entityEntry.State == EntityState.Added;
         }
 
         public bool Update(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry= DbSet.Update(entity);
-            return entityEntry.State==EntityState.Modified;
+            EntityEntry<TEntity> entityEntry = DbSet.Update(entity);
+            return entityEntry.State == EntityState.Modified;
         }
 
         public bool Delete(TEntity entity)
@@ -42,7 +45,7 @@ namespace CatFood.DataAccess.Repositories.Concrete
         }
 
         public async Task<TEntity> GetById(int id)
-        
+
              => await DbSet.FirstOrDefaultAsync(x => x.Id == id);
 
         public IQueryable<TEntity> GetAll()
@@ -50,7 +53,9 @@ namespace CatFood.DataAccess.Repositories.Concrete
             => DbSet;
 
         public async Task<int> SaveAsync()
-        =>  await _context.SaveChangesAsync();
+        => await _context.SaveChangesAsync();
+
 
     }
 }
+

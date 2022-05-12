@@ -22,11 +22,11 @@ namespace CatFood.Business.Query
             _catRepository = catRepository;
             _mapper = mapper;
         }
-        public Task<CatByIdQueryResponse> Handle(CatByIdQueryRequest request, CancellationToken cancellationToken)
+        public async Task<CatByIdQueryResponse> Handle(CatByIdQueryRequest request, CancellationToken cancellationToken)
         {
-            var cat = _catRepository.GetById(request.Id);
+            var cat = await _catRepository.GetById(request.Id);
             var mapCat = _mapper.Map<CatByIdQueryResponse>(cat);
-            return Task.FromResult(mapCat);
+            return mapCat;
         }
     }
 }

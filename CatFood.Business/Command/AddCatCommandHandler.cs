@@ -24,15 +24,15 @@ namespace CatFood.Business.Command
             _mapper = mapper;
         }
 
-        public Task<AddCatCommandResponse> Handle(AddCatCommandRequest request, CancellationToken cancellationToken)
+        public async Task<AddCatCommandResponse> Handle(AddCatCommandRequest request, CancellationToken cancellationToken)
         {
 
             var mapCatRequest = _mapper.Map<Cat>(request);
-            var cat = _catRepository.Add(mapCatRequest);
+            var cat = await _catRepository.Add(mapCatRequest);
   
             
-            var mapCat = _mapper.Map<AddCatCommandResponse>(cat);
-            return Task.FromResult(mapCat);
+            var mapCat = _mapper.Map<AddCatCommandResponse>(mapCatRequest);
+            return mapCat;
         }
     }
 }

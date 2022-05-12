@@ -30,10 +30,7 @@ namespace CatFood.DataAccess
         //  }
 
 
-        public static void AddDataAccessRegistration(this IServiceCollection services)
-        {
-            services.AddDbContext<EfDbContext>(opt => opt.UseInMemoryDatabase("memoryDb"));
-        }
+       
     }
 
 

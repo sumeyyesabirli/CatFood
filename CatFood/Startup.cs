@@ -39,7 +39,7 @@ namespace CatFood.Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatFood", Version = "v1" });
             });
             services.AddDbContext<DbContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("Default")));
+                options.UseNpgsql(Configuration.GetConnectionString("Default")), ServiceLifetime.Transient);
             services.AddTransient<EfDbContext>();
 
           #region Repository Register

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CatFood.Business.Command.Requests;
+using CatFood.Business.Command.Responses;
 using CatFood.DataAccess.Repositories.Abstract;
 using Entities.Entities;
 using MediatR;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CatFood.Business.Command
 {
-    public class DeleteCatCommandHandler : IRequestHandler<DeleteCatCommandRequest, bool>
+    public class DeleteCatCommandHandler : IRequestHandler<DeleteCatCommandRequest, DeleteCatCommandResponse>
     {
         private readonly ICatRepository _catRepository;
         private readonly IMapper _mapper;
@@ -22,11 +23,15 @@ namespace CatFood.Business.Command
             _catRepository = catRepository;
             _mapper = mapper;
         }
-        public Task<bool> Handle(DeleteCatCommandRequest request, CancellationToken cancellationToken)
+        public async Task<DeleteCatCommandResponse> Handle(DeleteCatCommandRequest request, CancellationToken cancellationToken)
         {
-            var isDeleted = _catRepository.Delete(new Cat { Id = request.Id });
-           
-            return Task.FromResult(isDeleted);
+          
+            var mapCatRequest = _mapper.Map<Cat>(request);
+            var cat = await _catRepository.Add(mapCatRequest);
+
+
+            var mapCat = _mapper.Map<DeleteCatCommandResponse>(mapCatRequest);
+            return mapCat;
         }
     }
 }
