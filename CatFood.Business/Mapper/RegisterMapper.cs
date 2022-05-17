@@ -15,15 +15,14 @@ namespace CatFood.Business.Mapper
     public class RegisterMapper : Profile
     {
         public RegisterMapper()
-        {
-                CreateMap<Entities.Entities.Cat, CatFood.Business.Query.Responses.CatByIdQueryResponse>().ReverseMap();
-                CreateMap<Entities.Entities.Cat, CatFood.Business.Query.Responses.CatQueryResponse>().ReverseMap();
-                CreateMap<Entities.Entities.Cat, CatFood.Business.Command.Responses.UpdateCatCommandResponse>().ReverseMap();
-                CreateMap<CatFood.Business.Command.Requests.AddCatCommandRequest, Entities.Entities.Cat>().ReverseMap();
-                CreateMap<CatFood.Business.Command.Requests.UpdateCatCommandRequest, Entities.Entities.Cat>().ReverseMap();
-                CreateMap<Cat, AddCatCommandResponse>().ReverseMap();
+        {       CreateMap<Cat, AddCatCommandResponse>().ReverseMap();
+                CreateMap<Cat, CatByIdQueryResponse>().ReverseMap();
+                CreateMap<Cat, CatQueryResponse>().ReverseMap();
+                CreateMap<Cat, UpdateCatCommandResponse>().ReverseMap();
+                CreateMap<AddCatCommandRequest, Cat>().ReverseMap();
+                CreateMap<UpdateCatCommandRequest, Cat>().ReverseMap();                
                 CreateMap<AddCatCommandResponse, Cat>().ReverseMap();
-                CreateMap<DeleteCatCommandResponse, Cat>().ReverseMap(); 
+                
 
         }
     }

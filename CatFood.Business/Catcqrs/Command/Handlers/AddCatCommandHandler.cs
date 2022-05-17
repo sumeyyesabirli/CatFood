@@ -29,8 +29,7 @@ namespace CatFood.Business.Command
 
             var mapCatRequest = _mapper.Map<Cat>(request);
             var cat = await _catRepository.Add(mapCatRequest);
-  
-            
+            await _catRepository.SaveAsync(); // yukarıda yapılan işlemi save etmemizi sağlıyor... alt fonksiyonda saveChanges çalışıyor
             var mapCat = _mapper.Map<AddCatCommandResponse>(mapCatRequest);
             return mapCat;
         }

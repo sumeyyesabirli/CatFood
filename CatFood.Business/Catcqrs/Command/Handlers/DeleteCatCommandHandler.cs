@@ -13,22 +13,24 @@ using System.Threading.Tasks;
 
 namespace CatFood.Business.Command
 {
-    public class UpdateCatCommandHandler : IRequestHandler<UpdateCatCommandRequest, UpdateCatCommandResponse>
+    public class DeleteCatCommandHandler : IRequestHandler<DeleteCatCommandRequest, bool>
     {
         private readonly ICatRepository _catRepository;
         private readonly IMapper _mapper;
 
-        public UpdateCatCommandHandler(ICatRepository catRepository, IMapper mapper)
+        public DeleteCatCommandHandler(ICatRepository catRepository, IMapper mapper)
         {
             _catRepository = catRepository;
             _mapper = mapper;
         }
-        public Task<UpdateCatCommandResponse> Handle(UpdateCatCommandRequest request, CancellationToken cancellationToken)
-        {
-            var mapCatRequest = _mapper.Map<Cat>(request);
-            var cat = _catRepository.Update(mapCatRequest);
-            var mapCat = _mapper.Map<UpdateCatCommandResponse>(cat);
-            return Task.FromResult(mapCat);
+        public  Task<bool> Handle(DeleteCatCommandRequest request, CancellationToken cancellationToken)
+        {   
+            var isDeleted = _catRepository.Delete(new Cat{ Id = request.Id});
+            _catRepository.SaveAsync();
+
+            return Task.FromResult(isDeleted);
+
+       
         }
     }
 }

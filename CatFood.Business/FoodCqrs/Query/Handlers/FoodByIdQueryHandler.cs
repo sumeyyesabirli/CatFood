@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CatFood.Business.Command.Responses
+namespace CatFood.Business.FoodCqrs.Query.Handlers
 {
-    public class DeleteCatCommandResponse
+    internal class FoodByIdQueryHandler
     {
-        public int Id { get; set; }
     }
 }

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace CatFood.Business.Command.Requests
 {
-    public class DeleteCatCommandRequest : IRequest<DeleteCatCommandResponse>
+    public class DeleteCatCommandRequest : IRequest<bool>
     {
         public int Id { get; set; }
+
     }
 }

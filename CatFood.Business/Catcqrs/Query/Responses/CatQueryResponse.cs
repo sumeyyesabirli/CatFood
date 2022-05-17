@@ -9,7 +9,8 @@ namespace CatFood.Business.Query.Responses
     public class CatQueryResponse
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; }        
+        public  string CatType { get; set; }
         
     }
 }

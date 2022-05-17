@@ -11,7 +11,7 @@ namespace CatFood.Core.Repositories.Abstract
     public interface IRepository<T> where T : BaseEntity
     {
         Task<bool> Add(T entity);
-        bool Update(T entity);
+        Task<T>UpdateAsync(T entity);
         bool Delete(T entity);
         Task<T> GetById(int id);
         Task<int> SaveAsync();

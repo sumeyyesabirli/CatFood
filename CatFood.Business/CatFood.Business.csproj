@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Query\GetById\**" />
-    <EmbeddedResource Remove="Query\GetById\**" />
-    <None Remove="Query\GetById\**" />
+    <Compile Remove="Catcqrs\Query\GetById\**" />
+    <EmbeddedResource Remove="Catcqrs\Query\GetById\**" />
+    <None Remove="Catcqrs\Query\GetById\**" />
   </ItemGroup>
 
   <ItemGroup>

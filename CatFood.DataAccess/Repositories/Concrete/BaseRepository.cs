@@ -23,19 +23,17 @@ namespace CatFood.DataAccess.Repositories.Concrete
             DbSet = _context.Set<TEntity>();
         }
 
-      
-
-
         public async Task<bool> Add(TEntity entity)
         {
             EntityEntry<TEntity> entityEntry = await DbSet.AddAsync(entity);
             return entityEntry.State == EntityState.Added;
         }
 
-        public bool Update(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity)
         {
-            EntityEntry<TEntity> entityEntry = DbSet.Update(entity);
-            return entityEntry.State == EntityState.Modified;
+            _context.Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         public bool Delete(TEntity entity)
@@ -55,7 +53,7 @@ namespace CatFood.DataAccess.Repositories.Concrete
         public async Task<int> SaveAsync()
         => await _context.SaveChangesAsync();
 
-
+      
     }
 }
 

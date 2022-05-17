@@ -9,6 +9,7 @@ namespace Entities.Entities
 {
     public class Cat : BaseEntity
     {
+       
         public string Name { get; set; }
         public string CatType { get; set; }
     }
