@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CatFood.Business.Command
+namespace CatFood.Business.Catcqrs.Command.Handlers
 {
     public class AddCatCommandHandler : IRequestHandler<AddCatCommandRequest, AddCatCommandResponse>
     {

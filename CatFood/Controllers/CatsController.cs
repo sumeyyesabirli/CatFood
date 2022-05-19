@@ -36,14 +36,10 @@ namespace CatFood.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id) 
             => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
-
-      
+        
 
         [HttpPost("{id}")]
         public async Task<IActionResult> Update([FromBody] CatFood.Business.Command.Requests.UpdateCatCommandRequest request)
          => Ok(await _mediator.Send(request));
-
-
-
     }
 }

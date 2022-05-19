@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CatFood.Business.FoodCqrs.Query.Responses
 {
-    internal class FoodQueryResponse
+    public class FoodQueryResponse
     {
     }
 }
