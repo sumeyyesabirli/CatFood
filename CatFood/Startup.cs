@@ -37,6 +37,7 @@ namespace CatFood.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CatFood", Version = "v1" });
+                
             });
             services.AddDbContext<DbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("Default")), ServiceLifetime.Transient);
@@ -59,6 +60,7 @@ namespace CatFood.Api
                 conf.AddProfile<RegisterMapper>();
             });
             services.AddScoped(s => config.CreateMapper());
+
 
         }
 

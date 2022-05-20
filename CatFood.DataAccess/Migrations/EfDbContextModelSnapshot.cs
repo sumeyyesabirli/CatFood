@@ -19,7 +19,7 @@ namespace CatFood.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("CatFood.DataAccess.Entities.Cats", b =>
+            modelBuilder.Entity("Entities.Entities.Cat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -37,7 +37,7 @@ namespace CatFood.DataAccess.Migrations
                     b.ToTable("Cats");
                 });
 
-            modelBuilder.Entity("CatFood.DataAccess.Entities.Foods", b =>
+            modelBuilder.Entity("Entities.Entities.Food", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -66,15 +66,15 @@ namespace CatFood.DataAccess.Migrations
                     b.ToTable("Foods");
                 });
 
-            modelBuilder.Entity("CatFood.DataAccess.Entities.Foods", b =>
+            modelBuilder.Entity("Entities.Entities.Food", b =>
                 {
-                    b.HasOne("CatFood.DataAccess.Entities.Cats", "Cats")
+                    b.HasOne("Entities.Entities.Cat", "Cat")
                         .WithMany()
                         .HasForeignKey("CatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cats");
+                    b.Navigation("Cat");
                 });
 #pragma warning restore 612, 618
         }

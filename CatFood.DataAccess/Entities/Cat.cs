@@ -12,5 +12,7 @@ namespace Entities.Entities
        
         public string Name { get; set; }
         public string CatType { get; set; }
+       
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿
+using CatFood.Business.Catcqrs.Query.Handlers;
+using CatFood.Business.Catcqrs.Query.Requests;
 using CatFood.Business.Command.Requests;
 using CatFood.Business.Command.Responses;
 using CatFood.Business.Query.Requests;
@@ -28,7 +30,11 @@ namespace CatFood.Api.Controllers
         public async Task<IActionResult> GetAsync([FromRoute] int id)
             => Ok(await _mediator.Send(new CatByIdQueryRequest { Id = id }));
 
-         [HttpPost] //eklemme 
+        [HttpPost("{catId}")]
+        public async Task<IActionResult> GetCatEatFoodsById([FromRoute] int catId)
+            => Ok(await _mediator.Send(new CatsEatFoodsByIdQoeryRequest { catId = catId }));
+
+        [HttpPost] //eklemme 
         public async Task<IActionResult> InsertAsync([FromBody] CatFood.Business.Command.Requests.AddCatCommandRequest request)
            => Ok(await _mediator.Send(request));
 
@@ -36,9 +42,9 @@ namespace CatFood.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id) 
             => Ok(await _mediator.Send(new DeleteCatCommandRequest { Id = id }));
-        
 
-        [HttpPost("{id}")]
+
+        [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromBody] CatFood.Business.Command.Requests.UpdateCatCommandRequest request)
          => Ok(await _mediator.Send(request));
     }

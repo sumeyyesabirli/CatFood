@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 
 namespace Entities.Entities
 {
+
+   
     public class Food : BaseEntity
     {
         [Required, ForeignKey("Cats")]
         public int CatId { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime Time  { get; set; }
         public int Gram { get; set; }
         public string FoodType { get; set; }
         public bool? Sterilised { get; set; }
-
-        public Cat Cat { get; set; }
+        
+        public Cat Cats { get; set; }
+        
     }
 }

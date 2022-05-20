@@ -10,5 +10,6 @@ namespace CatFood.DataAccess.Repositories.Abstract
 {
     public interface ICatRepository : IRepository<Cat>
     {
+            
     }
 }

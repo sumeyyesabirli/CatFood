@@ -10,5 +10,6 @@ namespace CatFood.DataAccess.Repositories.Abstract
 {
     public interface IFoodRepository : IRepository<Food>
     {
+        public List<Food> GetCatEatFoodsById(int id);
     }
 }

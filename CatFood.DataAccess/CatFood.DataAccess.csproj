@@ -19,4 +19,8 @@
     <ProjectReference Include="..\CatFood.Core\CatFood.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

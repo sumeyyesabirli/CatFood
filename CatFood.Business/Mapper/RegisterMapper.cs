@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using CatFood.Business.Catcqrs.Query.Requests;
+using CatFood.Business.Catcqrs.Query.Responses;
 using CatFood.Business.Command.Requests;
 using CatFood.Business.Command.Responses;
 using CatFood.Business.FoodCqrs.Command.Requests;
@@ -32,7 +34,7 @@ namespace CatFood.Business.Mapper
                 CreateMap<AddFoodCommandRequest, Food>().ReverseMap();
                 CreateMap<UpdateFoodCommandRequest, Food>().ReverseMap();
                 CreateMap<AddFoodCommandResponse, Food>().ReverseMap();
-
+                CreateMap<Food, CatsEatFoodsByIdQoeryResponse>().ReverseMap();                       
 
         }
     }

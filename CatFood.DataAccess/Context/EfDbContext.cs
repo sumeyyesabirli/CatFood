@@ -20,6 +20,7 @@ namespace CatFood.DataAccess.Context
         }
         public DbSet<Cat> Cats { get; set; }
         public DbSet<Food> Foods { get; set; }
+        
 
     }
 }

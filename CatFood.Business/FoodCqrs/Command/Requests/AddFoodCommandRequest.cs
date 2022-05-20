@@ -10,9 +10,8 @@ namespace CatFood.Business.FoodCqrs.Command.Requests
 {
     public class AddFoodCommandRequest :IRequest<AddFoodCommandResponse>
     {
-        public int Id { get; set; }
-        public int FoodId { get; set; }
-
+        
+       
         public int CatId { get; set; }
         public DateTime Time { get; set; }
         public int Gram { get; set; }
